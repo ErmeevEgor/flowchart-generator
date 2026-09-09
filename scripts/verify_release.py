@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import subprocess
 import sys
 import tempfile
@@ -12,7 +13,8 @@ from pathlib import Path
 
 
 REPOSITORY = Path(__file__).resolve().parent.parent
-ARCHIVE = REPOSITORY / "release" / "process-flowchart-generator-0.2.0.zip"
+RELEASE = json.loads((REPOSITORY / "portable-skills" / "process-flowchart-generator" / "release.json").read_text(encoding="utf-8"))
+ARCHIVE = REPOSITORY / "release" / f"{RELEASE['name']}-{RELEASE['version']}.zip"
 CHECKSUM = ARCHIVE.with_suffix(f"{ARCHIVE.suffix}.sha256")
 
 
@@ -40,4 +42,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

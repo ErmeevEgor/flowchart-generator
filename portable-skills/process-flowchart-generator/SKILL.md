@@ -7,6 +7,8 @@ description: Create editable, plain-language business process flowcharts from at
 
 Create simple business process diagrams. This skill is independent of every BPMN generator and must not read, call, import, or modify BPMN projects.
 
+When the user asks how to connect or use this skill without terminal commands, direct them to [USER_GUIDE.md](USER_GUIDE.md).
+
 ## Select the mode
 
 Honor an explicitly requested mode. Otherwise use `process_only` and state the choice in the result.
@@ -27,6 +29,13 @@ For the second mode, read [references/modes.md](references/modes.md). Never inve
 7. If graph validation fails, correct only the unsupported or malformed extraction by checking the source again. Do not change source facts to make validation pass.
 8. Inspect the generated SVG for clipped text, overlaps, ambiguous arrows, crossings, and branches that do not visibly rejoin. Geometry is owned by the runtime; do not ask an LLM to invent coordinates.
 9. Deliver the editable `.drawio`, the `.svg`, and the source JSON. In subprocess mode also deliver `manifest.json` and identify which overview node each subprocess expands.
+
+## User interaction
+
+- When the host provides filesystem and execution tools, perform extraction, setup, generation, validation, and file handling yourself. Do not ask the user to type terminal, PowerShell, Node.js, Python, npm, or Git commands.
+- Return the generated artifacts as accessible files or links. Do not substitute a command list or pasted XML for requested files.
+- In a web-only host, first determine whether repository access, code execution, and file delivery are available. If any required capability is missing, state the limitation before extraction and do not claim that the runtime was executed.
+- If execution is unavailable, offer to produce a draft Process Model JSON only when the user wants that fallback. Do not manually imitate the deterministic renderer.
 
 ## Run the generator
 

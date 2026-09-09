@@ -13,6 +13,7 @@ from pathlib import Path
 SKILL_ROOT = Path(__file__).resolve().parent.parent
 REQUIRED = (
     "SKILL.md",
+    "USER_GUIDE.md",
     "agents/openai.yaml",
     "references/modes.md",
     "references/process-model.md",
