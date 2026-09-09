@@ -1,0 +1,19 @@
+{
+  "name": "process-flowchart-generator",
+  "version": "0.2.0",
+  "status": "release",
+  "runtime": {
+    "node": ">=20",
+    "npmDependencies": false
+  },
+  "modes": [
+    "process_only",
+    "process_with_subprocesses"
+  ],
+  "outputs": [
+    "json",
+    "drawio",
+    "svg"
+  ]
+}
+

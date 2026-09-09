@@ -1,0 +1,23 @@
+{
+  "name": "schemes-generator",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Deterministic generator of simple business process flowcharts",
+  "type": "module",
+  "bin": {
+    "schemes-generator": "dist/src/app/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test dist/tests/*.test.js",
+    "generate": "npm run build && node dist/src/app/cli.js",
+    "check": "npm run build && npm test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0"
+  }
+}

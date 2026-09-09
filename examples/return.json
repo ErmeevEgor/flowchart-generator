@@ -1,0 +1,17 @@
+{
+  "title": "Согласование документа",
+  "nodes": [
+    { "id": "start", "type": "start", "text": "Документ подготовлен" },
+    { "id": "review", "type": "action", "text": "Проверить документ", "role": "Руководитель" },
+    { "id": "approved", "type": "decision", "text": "Документ согласован?" },
+    { "id": "fix", "type": "action", "text": "Исправить замечания", "role": "Исполнитель" },
+    { "id": "end", "type": "end", "text": "Документ согласован" }
+  ],
+  "edges": [
+    { "from": "start", "to": "review", "kind": "main" },
+    { "from": "review", "to": "approved", "kind": "main" },
+    { "from": "approved", "to": "end", "label": "Да", "kind": "main" },
+    { "from": "approved", "to": "fix", "label": "Нет", "kind": "alternative" },
+    { "from": "fix", "to": "review", "label": "После исправления", "kind": "return" }
+  ]
+}

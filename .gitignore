@@ -1,0 +1,11 @@
+node_modules/
+dist/
+input/*
+!input/.gitkeep
+output/*
+!output/.gitkeep
+*.log
+.env
+release/*.zip
+release/*.sha256
+.DS_Store

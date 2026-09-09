@@ -1,0 +1,21 @@
+{
+  "title": "Обработка заказа клиента",
+  "nodes": [
+    { "id": "n1", "type": "start", "text": "Получена заявка" },
+    { "id": "n2", "type": "action", "text": "Проверить наличие товара", "role": "Менеджер", "system": "1С:ERP" },
+    { "id": "n3", "type": "decision", "text": "Товар есть на складе?" },
+    { "id": "n4", "type": "action", "text": "Передать заказ на склад" },
+    { "id": "n5", "type": "action", "text": "Сформировать заказ поставщику", "document": "Заказ поставщику" },
+    { "id": "n6", "type": "action", "text": "Подтвердить срок поставки" },
+    { "id": "n7", "type": "end", "text": "Заказ готов к исполнению" }
+  ],
+  "edges": [
+    { "from": "n1", "to": "n2", "kind": "main" },
+    { "from": "n2", "to": "n3", "kind": "main" },
+    { "from": "n3", "to": "n4", "label": "Да", "kind": "main" },
+    { "from": "n3", "to": "n5", "label": "Нет", "kind": "alternative" },
+    { "from": "n5", "to": "n6", "kind": "alternative" },
+    { "from": "n4", "to": "n7", "kind": "main" },
+    { "from": "n6", "to": "n7", "kind": "alternative" }
+  ]
+}

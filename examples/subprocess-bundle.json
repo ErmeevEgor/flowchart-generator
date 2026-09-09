@@ -1,0 +1,43 @@
+{
+  "title": "Комплектация заказа",
+  "overview": {
+    "title": "Комплектация заказа — обзор",
+    "nodes": [
+      { "id": "o1", "type": "start", "text": "Заказ подтверждён" },
+      { "id": "o2", "type": "action", "text": "Отобрать товар", "role": "Кладовщик", "system": "ТСД" },
+      { "id": "o3", "type": "action", "text": "Подготовить документы" },
+      { "id": "o4", "type": "end", "text": "Заказ готов к отгрузке" }
+    ],
+    "edges": [
+      { "from": "o1", "to": "o2", "kind": "main" },
+      { "from": "o2", "to": "o3", "kind": "main" },
+      { "from": "o3", "to": "o4", "kind": "main" }
+    ]
+  },
+  "subprocesses": [
+    {
+      "id": "goods-picking",
+      "overviewNodeId": "o2",
+      "title": "Отбор товара",
+      "process": {
+        "title": "Отбор товара",
+        "nodes": [
+          { "id": "s1", "type": "start", "text": "Получено задание на отбор" },
+          { "id": "s2", "type": "action", "text": "Отсканировать ячейку", "role": "Кладовщик", "system": "ТСД" },
+          { "id": "s3", "type": "decision", "text": "Товар найден?" },
+          { "id": "s4", "type": "action", "text": "Отсканировать товар", "role": "Кладовщик", "system": "ТСД" },
+          { "id": "s5", "type": "action", "text": "Сообщить об отсутствии товара", "role": "Кладовщик" },
+          { "id": "s6", "type": "end", "text": "Отбор завершён" }
+        ],
+        "edges": [
+          { "from": "s1", "to": "s2", "kind": "main" },
+          { "from": "s2", "to": "s3", "kind": "main" },
+          { "from": "s3", "to": "s4", "label": "Да", "kind": "main" },
+          { "from": "s3", "to": "s5", "label": "Нет", "kind": "alternative" },
+          { "from": "s4", "to": "s6", "kind": "main" },
+          { "from": "s5", "to": "s6", "kind": "alternative" }
+        ]
+      }
+    }
+  ]
+}

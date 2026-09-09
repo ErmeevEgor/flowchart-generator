@@ -1,0 +1,5 @@
+interface:
+  display_name: "Генератор блок-схем процессов"
+  short_description: "Создаёт простые схемы процессов без BPMN"
+  default_prompt: "Используй $process-flowchart-generator, чтобы создать редактируемую блок-схему по приложенной инструкции."
+
